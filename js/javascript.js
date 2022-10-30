@@ -1,13 +1,32 @@
 // create choices = rock, paper or scissors
+const choices = ["Rock", "Paper", "Scissors"];
 // rules = rock > scissors, scissors > paper, paper > rock
-// create variable computerChoice(), string, with value from getComputerChoice()
+
+// generate computer choice
+    // create variable computerChoice(), string, with value from getComputerChoice()
+let computerChoice = undefined;
+let computerScore = 0;
+//console.log(computerChoice);
     //create function getComputerChoice() 
-        // return computerChoice = randomly assigned value from choices list
-// create variable playerSelection(), string, initial value ""
-// ask the user "Rock, paper or scissors?", validate response and store in playerSelection()
+            // return computerChoice = randomly assigned value from choices list
+function getComputerChoice(){
+    //get random index value
+    let randomIndex = Math.floor(Math.random() * choices.length);
+    //get random item
+    computerChoice = choices[randomIndex];
+    return computerChoice;
+}
+console.log(getComputerChoice());
+
+// simultaneously ask player for choice
+let playerSelection = undefined;
+let playerScore = 0;
+    // create variable playerSelection(), string, initial value ""
+        // ask the user "Rock, paper or scissors?", validate response and store in playerSelection()
+
 // create function playRound()
 // compare choices, return result to playerScore(), display message
-// if playerScore 
+ 
 
 
 

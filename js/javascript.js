@@ -2,62 +2,74 @@
 // create choices = rock, paper or scissors
 const choices = ["Rock", "Paper", "Scissors"];
 
+// set starting scores
+let computerScore = 0;
+let playerScore = 0;
 
 // welcome message
 let welcomeMessage = "Welcome to the game! Round 1:"
     console.log(welcomeMessage);
 
-// simultaneously ask player for choice
+// ask player for choice
 let playerSelection = "scissoRs";
     playerSelection = playerSelection.toLowerCase();
-let playerScore = 0;
+// print player choice in console
+console.log(`Your choice: ${playerSelection.toUpperCase()}`);
 
-console.log(`Your choice: ${playerSelection}`);
 
-
-    // generate computer choice
-    // create variable computerChoice(), string, with value from getComputerChoice()
-let computerScore = 0;
-//console.log(computerChoice);
-    //create function getComputerChoice() 
-            // return computerChoice = randomly assigned value from choices list
+// generate computer choice
+    //create function getComputerChoice() which returns randomly assigned value from choices list
 function getComputerChoice(){
-    //get random index value
+        //get random index value
     let randomIndex = Math.floor(Math.random() * choices.length);
-    //get random item
-    return computerChoice = (choices[randomIndex]).toLowerCase();
+        //get random item
+    return computerSelection = (choices[randomIndex]).toLowerCase();
 }
 
 // set computer choice for this round
-const computerChoice1 = getComputerChoice();
+//const computerChoice1 = getComputerChoice();
 // send message to console
-console.log(`Computer choice: ${computerChoice1}`);
+//console.log(`Computer choice: ${computerChoice1.toUpperCase()}`);
 //const computerChoice2 = "Computer Choice 2: " + getComputerChoice();
-//console.log(computerChoice1, computerChoice2)
 
 
-    // create variable playerSelection(), string, initial value ""
-        // ask the user "Rock, paper or scissors?", validate response and store in playerSelection()
+// Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
+
+function game() {
+
+}
+
+
 
 // create function playRound()
-function playRound(playerSelection,computerChoice1){
-   if (playerSelection === computerChoice1) {
+function playRound(playerSelection){
+// set computer choice for this round    
+    let computerSelection = getComputerChoice();
+// send message to console   
+    console.log(`Computer choice: ${computerSelection.toUpperCase()}`); 
+// play round       
+   if (playerSelection === computerSelection) {
         result = "It's a draw!";
     }
     // rules = rock > scissors, scissors > paper, paper > rock
-    else if ( (playerSelection == "scissors" && computerChoice1 == "paper") || (playerSelection == "paper" && computerChoice1 == "rock") || (playerSelection == "rock" && computerChoice1== "scissors")) {
-        result = playerSelection.toUpperCase() + " beats " + computerChoice1.toUpperCase() + "! You win!"
+    else if ( (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "rock" && computerSelection == "scissors")) {
+        result = playerSelection.toUpperCase() + " beats " + computerSelection.toUpperCase() + "! You win!"
     }
     else {
-        result = computerChoice1.toUpperCase() + " beats " + playerSelection.toUpperCase() + "! You lose!"
+        result = computerSelection.toUpperCase() + " beats " + playerSelection.toUpperCase() + "! You lose!"
     }
        
    return result; 
 }
-console.log(playRound(playerSelection,computerChoice1));
+// print result to console
+console.log(playRound(playerSelection));
  
 
 
+// ************* Cut content ***********
+
+ // create variable playerSelection(), string, initial value ""
+        // ask the user "Rock, paper or scissors?", validate response and store in playerSelection()
 
 
 

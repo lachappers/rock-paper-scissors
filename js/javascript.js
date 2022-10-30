@@ -1,9 +1,21 @@
 
 // create choices = rock, paper or scissors
 const choices = ["Rock", "Paper", "Scissors"];
-// rules = rock > scissors, scissors > paper, paper > rock
 
-// generate computer choice
+
+// welcome message
+let welcomeMessage = "Welcome to the game! Round 1:"
+    console.log(welcomeMessage);
+
+// simultaneously ask player for choice
+let playerSelection = "scissoRs";
+    playerSelection = playerSelection.toLowerCase();
+let playerScore = 0;
+
+console.log(`Your choice: ${playerSelection}`);
+
+
+    // generate computer choice
     // create variable computerChoice(), string, with value from getComputerChoice()
 let computerScore = 0;
 //console.log(computerChoice);
@@ -15,37 +27,34 @@ function getComputerChoice(){
     //get random item
     return computerChoice = (choices[randomIndex]).toLowerCase();
 }
-console.log(getComputerChoice());
+
+// set computer choice for this round
+const computerChoice1 = getComputerChoice();
+// send message to console
+console.log(`Computer choice: ${computerChoice1}`);
+//const computerChoice2 = "Computer Choice 2: " + getComputerChoice();
+//console.log(computerChoice1, computerChoice2)
 
 
-
-const computerChoice1 = "Computer Choice 1: " + getComputerChoice();
-const computerChoice2 = "Computer Choice 2: " + getComputerChoice();
-console.log(computerChoice1, computerChoice2)
-
-// simultaneously ask player for choice
-let playerSelection = "scissoRs";
-    playerSelection = playerSelection.toLowerCase();
-let playerScore = 0;
-
-console.log(playerSelection);
     // create variable playerSelection(), string, initial value ""
         // ask the user "Rock, paper or scissors?", validate response and store in playerSelection()
-// welcome message
-let welcomeMessage = "Welcome to the game"
-    console.log(welcomeMessage);
+
 // create function playRound()
-function playRound(playerSelection,getComputerChoice){
-   if (playerSelection === getComputerChoice()) {
+function playRound(playerSelection,computerChoice1){
+   if (playerSelection === computerChoice1) {
         result = "It's a draw!";
     }
+    // rules = rock > scissors, scissors > paper, paper > rock
+    else if ( (playerSelection == "scissors" && computerChoice1 == "paper") || (playerSelection == "paper" && computerChoice1 == "rock") || (playerSelection == "rock" && computerChoice1== "scissors")) {
+        result = playerSelection.toUpperCase() + " beats " + computerChoice1.toUpperCase() + "! You win!"
+    }
     else {
-       result = "game on!" 
-    } 
+        result = computerChoice1.toUpperCase() + " beats " + playerSelection.toUpperCase() + "! You lose!"
+    }
+       
    return result; 
 }
-console.log(playRound(playerSelection,getComputerChoice));
-// compare choices, return result to playerScore(), display message
+console.log(playRound(playerSelection,computerChoice1));
  
 
 

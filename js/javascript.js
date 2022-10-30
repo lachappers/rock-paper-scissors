@@ -26,20 +26,6 @@ function getComputerChoice(){
     return computerSelection = (choices[randomIndex]).toLowerCase();
 }
 
-// set computer choice for this round
-//const computerChoice1 = getComputerChoice();
-// send message to console
-//console.log(`Computer choice: ${computerChoice1.toUpperCase()}`);
-//const computerChoice2 = "Computer Choice 2: " + getComputerChoice();
-
-
-// Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
-
-function game() {
-
-}
-
-
 
 // create function playRound()
 function playRound(playerSelection){
@@ -63,7 +49,22 @@ function playRound(playerSelection){
 }
 // print result to console
 console.log(playRound(playerSelection));
- 
+
+
+// Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
+
+function game() {
+    //let result = "";
+    for (let i = 0; i < 5; i++){
+        //result += "Round " + i + "result: ";
+        let a = i+1
+        result = `Round ${a}: ${playRound(playerSelection)}`;
+        console.log(result);
+        }
+}
+
+console.log(game());
+
 
 
 // ************* Cut content ***********

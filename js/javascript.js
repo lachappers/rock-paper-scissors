@@ -4,7 +4,6 @@ const choices = ["Rock", "Paper", "Scissors"];
 
 // generate computer choice
     // create variable computerChoice(), string, with value from getComputerChoice()
-let computerChoice = undefined;
 let computerScore = 0;
 //console.log(computerChoice);
     //create function getComputerChoice() 
@@ -13,14 +12,17 @@ function getComputerChoice(){
     //get random index value
     let randomIndex = Math.floor(Math.random() * choices.length);
     //get random item
-    computerChoice = choices[randomIndex];
+    computerChoice = (choices[randomIndex]).toLowerCase();
     return computerChoice;
 }
 console.log(getComputerChoice());
 
 // simultaneously ask player for choice
-let playerSelection = undefined;
+let playerSelection = "scissoRs";
+    playerSelection = playerSelection.toLowerCase();
 let playerScore = 0;
+
+console.log(playerSelection);
     // create variable playerSelection(), string, initial value ""
         // ask the user "Rock, paper or scissors?", validate response and store in playerSelection()
 

@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
-</head>
-<body>
-    <script>
+// create choices = rock, paper or scissors
+// rules = rock > scissors, scissors > paper, paper > rock
+// create variable computerChoice(), string, with value from getComputerChoice()
+    //create function getComputerChoice() 
+        // return computerChoice = randomly assigned value from choices list
+// create variable playerSelection(), string, initial value ""
+// ask the user "Rock, paper or scissors?", validate response and store in playerSelection()
+// create function playRound()
+// compare choices, return result to playerScore(), display message
+// if playerScore 
+
+
+
+
+
+/*
         // game logic
 
         
@@ -62,9 +68,4 @@
             return result.textContent
         }
         console.log(playRound(playerSelection,computerChoice));
-
-
-    </script>
-    <script src=""
-</body>
-</html>
+        */

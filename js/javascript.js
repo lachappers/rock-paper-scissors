@@ -10,9 +10,7 @@ let playerScore = 0;
 let welcomeMessage = "Welcome to the game!"
     console.log(welcomeMessage);
 
-// ask player for choice
-let playerSelection = "scissoRs";
-    playerSelection = playerSelection.toLowerCase();
+
 
 // generate computer choice
     //create function getComputerChoice() which returns randomly assigned value from choices list
@@ -25,9 +23,12 @@ function getComputerChoice(){
 
 
 // create function playRound()
-function playRound(playerSelection){
+function playRound(){
+    // ask player for choice
+    let playerSelection = window.prompt("Rock, Paper or Scissors?");
+         playerSelection = playerSelection.toLowerCase();
     // print player choice in console
-console.log(`Your choice: ${playerSelection.toUpperCase()}`);
+    console.log(`Your choice: ${playerSelection.toUpperCase()}`);
 // set computer choice for this round    
     let computerSelection = getComputerChoice();
 // send message to console   
@@ -58,7 +59,7 @@ function game() {
     for (let i = 0; i < 5; i++){
         // run rounds
         let a = i+1
-        result = `Round ${a}: ${playRound(playerSelection)}`;
+        result = `Round ${a}: ${playRound()}`;
         // track score
             if (winner == "player") {
                 playerScore += 1

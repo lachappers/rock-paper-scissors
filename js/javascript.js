@@ -3,8 +3,10 @@
 const choices = ["Rock", "Paper", "Scissors"];
 
 // set starting scores
-let computerScore = 0;
-let playerScore = 0;
+//let computerScore = 0;
+//let playerScore = 0;
+// change to array
+const scores = [0,0];
 
 // welcome message
 let welcomeMessage = "Welcome to the game!"
@@ -66,12 +68,12 @@ function game() {
 
         // track score
             if (winner == "player") {
-                playerScore += 1
+                scores[0] += 1
             }
             else if (winner == "computer"){
-                computerScore +=1
+                scores [1] +=1
             }
-            let currentResult = `Player: ${playerScore}: Computer: ${computerScore}`;
+            let currentResult = `Player: ${scores[0]}: Computer: ${scores[1]}`;
         console.log(result);
         console.log(currentResult);
         };
@@ -82,6 +84,8 @@ function game() {
 //let finalScore = `Final score: ${endResult}`
 // console.log(finalScore);
     console.log(game());
+    let finalScore = `Final Score: Player: ${scores[0]}, Computer: ${scores[1]}`
+    console.log(finalScore);
 
 
 

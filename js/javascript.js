@@ -79,7 +79,7 @@ function game() {
         endResult = currentResult;
         };
     
-    return `Final score: ${endResult}`
+    return `Final score: ${endResult}`;
 }
  //   return endResult = currentResult;
 

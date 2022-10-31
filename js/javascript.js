@@ -53,13 +53,16 @@ function playRound(){
 // console.log(playRound(playerSelection));
 
 
+
 // Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
 
 function game() {
+
     for (let i = 0; i < 5; i++){
         // run rounds
         let a = i+1
         result = `Round ${a}: ${playRound()}`;
+
         // track score
             if (winner == "player") {
                 playerScore += 1
@@ -67,15 +70,18 @@ function game() {
             else if (winner == "computer"){
                 computerScore +=1
             }
-        let currentResult = `Player: ${playerScore}: Computer: ${computerScore}`;
+            let currentResult = `Player: ${playerScore}: Computer: ${computerScore}`;
         console.log(result);
         console.log(currentResult);
-        }
-    // let finalScore = `Final score: ${currentResult}`
-    // console.log(finalScore);
+        };
+ //   return endResult = currentResult;
+
+    
 }
 
-console.log(game());
+//let finalScore = `Final score: ${endResult}`
+// console.log(finalScore);
+    console.log(game());
 
 
 

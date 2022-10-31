@@ -49,7 +49,8 @@ function playRound(){
     }       
    return result; 
 }
-// print result to console
+
+// print final result to console
 // console.log(playRound(playerSelection));
 
 
@@ -74,10 +75,9 @@ function game() {
         console.log(result);
         console.log(currentResult);
         };
- //   return endResult = currentResult;
-
     
 }
+ //   return endResult = currentResult;
 
 //let finalScore = `Final score: ${endResult}`
 // console.log(finalScore);

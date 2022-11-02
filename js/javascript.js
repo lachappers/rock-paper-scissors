@@ -8,49 +8,85 @@ const choices = ["Rock", "Paper", "Scissors"];
 // change to array
 const scores = [0,0];
 
-// welcome message
-let welcomeMessage = "Welcome to the game!"
-    console.log(welcomeMessage);
+const message = document.querySelector('#message');
+    const welcomeMessage = document.createElement('div');
+        welcomeMessage.textContent = "Welcome to the game!";
+        message.appendChild(welcomeMessage);
+        //console.log(welcomeMessage);
+    
+    const picks = document.querySelector('#currentSelection'); {
+        const playerPick = document.createElement('div');
+        playerPick.textContent = `Take your pick!`;
+        picks.appendChild(playerPick); 
+    }
+
+
+const results = document.querySelector('#results'); {
+    const playerScore = document.createElement('div');
+    playerScore.textContent = scores[0];
+    results.appendChild(playerScore);
+
+    const computerScore = document.createElement('div');
+    computerScore.textContent = scores[1];
+    results.appendChild(computerScore);
+
+};
 
 
 
 // generate computer choice
     //create function getComputerChoice() which returns randomly assigned value from choices list
 function getComputerChoice(){
-        //get random index value
-    let randomIndex = Math.floor(Math.random() * choices.length);
-        //get random item
-    return computerSelection = (choices[randomIndex]).toLowerCase();
+    let randomIndex = Math.floor(Math.random() * choices.length);         //get random index value
+    return computerSelection = (choices[randomIndex]).toLowerCase();        //get random item
 }
 
 
 // create function playRound()
 function playRound(){
     // ask player for choice
-    let playerSelection = window.prompt("Rock, Paper or Scissors?");
-         playerSelection = playerSelection.toLowerCase();
-    // print player choice in console
-    console.log(`Your choice: ${playerSelection.toUpperCase()}`);
-// set computer choice for this round    
-    let computerSelection = getComputerChoice();
-// send message to console   
-    console.log(`Computer choice: ${computerSelection.toUpperCase()}`); 
-// play round       
+    //let playerSelection = window.prompt("Rock, Paper or Scissors?");
+    //playerSelection = playerSelection.toLowerCase();
+    const btns = document.querySelectorAll('#btn');
+        btns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                return playerSelection = (btn.innerHTML).toLowerCase;
+            });
+        });
+
+    //playerPick.replaceWith(`Your choice: ${playerSelection.toUpperCase()}`);
+     //   picks.appendChild(playerPick); 
+    
+
+    //console.log(`Your choice: ${playerSelection.toUpperCase}`); // print player choice in console
+   
+    let computerSelection = getComputerChoice(); // set computer choice for this round 
+  
+    console.log(`Computer choice: ${computerSelection.toUpperCase()}`); // send message to console 
+      
    if (playerSelection === computerSelection) {
-        result = "It's a draw!";
-        winner = "draw";
-    }
-    // rules = rock > scissors, scissors > paper, paper > rock
+        let result = "It's a draw!";
+        let winner = "draw";
+    }// play round 
+    
     else if ( (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "rock" && computerSelection == "scissors")) {
-        result = playerSelection.toUpperCase() + " beats " + computerSelection.toUpperCase() + "! You win!"
+        result = `${playerSelection.toUpperCase} beats ${computerSelection.toUpperCase()}! You win!`
         winner = "player";
     }
     else {
-        result = computerSelection.toUpperCase() + " beats " + playerSelection.toUpperCase() + "! You lose!"
+        result = `${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase}! You lose!`
         winner = "computer";
-    }       
-   return result; 
+    } // rules = rock > scissors, scissors > paper, paper > rock      
+
+    return result; 
+
+    const results = document.querySelector('#results'); {    
+        const roundResult = document.createElement('div');
+        roundResult.textContent = result;
+        results.appendChild(result);
+    };
 }
+
 
 // print final result to console
 // console.log(playRound(playerSelection));
@@ -81,19 +117,11 @@ function game(rounds) {
     
     return `Final score: ${endResult}`;
 }
+//const currentResult = 
 
-    //console.log(game(2));
+    console.log(game(2));
 
    // let finalScore = `Final Score: Player: ${scores[0]}, Computer: ${scores[1]}`
    // console.log(finalScore);
 
 
-const btns = document.querySelectorAll('#btn');
-    btns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            console.log(btn.innerHTML);
-        });
-    });
-
-
-    //console.log(btns);

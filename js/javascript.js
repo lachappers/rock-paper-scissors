@@ -3,6 +3,9 @@ const choices = ["Rock", "Paper", "Scissors"]; // create choices = rock, paper o
 
 const scores = [0,0]; // set starting scores
 
+let computerSelection;
+let playerSelection;
+
 // pick a move
 
 // computer selection
@@ -12,45 +15,52 @@ function getComputerChoice(){ //create function getComputerChoice() which return
     return computerSelection = (choices[randomIndex]).toLowerCase();        //get random item
 }
 
-// const buttons = document.querySelectorAll('button');
-//     buttons.forEach((button) => {
-//         button.addEventListener('click', () => {      // return playerSelection;
-//             const playerSelection = document.querySelector('#playerPick');
-//             playerSelection.textContent = (button.innerHTML);
-//         //console.log(`Your choice: ${playerSelection}`); 
-//         });
-//     });
-function getPlayerChoice(){
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach((button) => {
-        button.addEventListener('click', 
-        () => {
-                const playerSelection = document.querySelector('#playerPick');
-                playerSelection.textContent = (button.innerHTML);
-                //return playerSelectionText = playerSelection.textContent;
-                console.log(playerSelection.textContent);
-            })  
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+        button.addEventListener('click', () => {      
+            const playerPick = document.querySelector('#playerPick');
+            playerPick.textContent = button.innerHTML;
+            playerSelection = (playerPick.textContent.toLowerCase());
+            playRound (playerSelection, computerSelection);
+        //console.log(`Your choice: ${playerSelection}`); 
+        });
     });
-}
+
+
+
+
+// function getPlayerChoice(){
+//     const buttons = document.querySelectorAll('button');
+//     buttons.forEach((button) => {
+//         button.addEventListener('click', 
+//         () => {
+//                 const playerSelection = document.querySelector('#playerPick');
+//                 playerSelection.textContent = (button.innerHTML);
+//                 //return playerSelectionText = playerSelection.textContent;
+//                 console.log(playerSelection.textContent);
+//             })  
+//     });
+// }
 //getPlayerChoice();
 
 //console.log(returnPlayerPick());
 
 
 
-function playRound(){ //play round
+
+
+function playRound(playerSelection, computerSelection){ //play round
     
-    let playerSelection = getPlayerChoice();
+    //playerSelection = getPlayerChoice();
     console.log(`Your choice: ${playerSelection}`); // print player choice in console
     
-    let computerSelection = getComputerChoice(); // set computer choice for this round 
+    computerSelection = getComputerChoice(); // set computer choice for this round 
     console.log(`Computer choice: ${computerSelection}`); // send message to console 
 
     if (playerSelection === computerSelection) { // play round
             let result = "It's a draw!";
             let winner = "draw";
-    }
-        
+    }  
     else if ( // rules = rock > scissors, scissors > paper, paper > rock 
         (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "rock" && computerSelection == "scissors")) {
             result = `${playerSelection.toUpperCase} beats ${computerSelection}! You win!`
@@ -62,8 +72,6 @@ function playRound(){ //play round
     };    
     return result; 
 };
-const playTime = document.querySelectorAll('button');
-playTime.addEventListener('click', playRound());
 
 // function game(rounds) {
 //     let endResult = "";

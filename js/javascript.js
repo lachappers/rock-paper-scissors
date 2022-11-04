@@ -26,7 +26,7 @@ buttons.forEach((button) => {
             winnerMessage.textContent = `Round ${i} winner: ${winner}`;
         if(scores[0] === winningScore || scores[1] === winningScore){
             const finalWinner = document.querySelector('#finalWinner');
-            const finalWinnerMessage = playerScore === winningScore
+            const finalWinnerMessage = scores[0] === winningScore
             ? `After round ${i}, YOU'RE THE WINNER!!`
             : `After round ${i}, COMPUTER WINS! YOU LOSE!`;
             finalWinner.textContent = finalWinnerMessage;

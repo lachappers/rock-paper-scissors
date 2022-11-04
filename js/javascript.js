@@ -6,12 +6,21 @@ const scores = [0,0]; // set starting scores
 let computerSelection;
 let playerSelection;
 let winner;
+let playerScore;
+let computerScore;
 
+function updateScores(){
+let playerScore = document.querySelector('#playerScore');
+    playerScore = scores[0];
+let computerScore = document.querySelector('#computerScore');
+    computerScore = scores[1];
+}
 
 function getComputerChoice(){ //create function getComputerChoice() which returns randomly assigned value from choices list
     let randomIndex = Math.floor(Math.random() * choices.length);         //get random index value
     return computerSelection = (choices[randomIndex]).toLowerCase();        //get random item
 }
+
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
@@ -23,7 +32,7 @@ buttons.forEach((button) => {
             computerSelection = getComputerChoice();
             const computerPick = document.querySelector('#computerPick');
             computerPick.textContent = `Computer picked: ${computerSelection} `;
-            game(1);
+            game(5);
             //playRound (playerSelection, computerSelection);
         //console.log(`Your choice: ${playerSelection}`); 
         }); 
@@ -64,19 +73,18 @@ function game(rounds) {
         const winnerMessage = document.querySelector(`#winnerMessage`)
         winnerMessage.textContent = `Round ${a} winner: ${playRound(playerSelection, computerSelection)}`;
 
-        // track score
-            if (winner == "player") { scores[0] += 1}
+            if (winner == "player") { scores[0] += 1} // track score
             else if (winner == "computer"){scores [1] +=1};
             let currentResult = `Player: ${scores[0]}: Computer: ${scores[1]}`;
-        
-        console.log(roundWinner);
+        updateScores();
+        //console.log(roundWinner);
         console.log(currentResult);
         endResult = currentResult;
     };
     
     return `Final score: ${endResult}`;
 }
-
+//game(2);
 // console.log(game(2));
 
 

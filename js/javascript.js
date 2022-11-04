@@ -1,32 +1,38 @@
 
-const choices = ["Rock", "Paper", "Scissors"]; // create choices = rock, paper or scissors
-
-const scores = [0,0]; // set starting scores
-
+const choices = ["Rock", "Paper", "Scissors"];
+// set starting values
+const scores = [0,0]; 
 let computerSelection;
 let playerSelection;
 let winner;
 let playerScore;
 let computerScore;
 let i = 0;
+let winningScore = 2;
 
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {    
         i +=1;
-        const playerPick = document.querySelector('#playerPick');
-        playerPick.textContent = `You picked: ${button.innerHTML}`;
-        playerSelection = ((button.innerHTML).toLowerCase());
+            const playerPick = document.querySelector('#playerPick');
+            playerPick.textContent = `You picked: ${button.innerHTML}`;
+            playerSelection = ((button.innerHTML).toLowerCase());
         computerSelection = getComputerChoice();
-        const computerPick = document.querySelector('#computerPick');
-        computerPick.textContent = `Computer picked: ${computerSelection} `;
+            const computerPick = document.querySelector('#computerPick');
+            computerPick.textContent = `Computer picked: ${computerSelection} `;
         playRound (playerSelection, computerSelection);
-        const winnerMessage = document.querySelector(`#winnerMessage`)
-        winnerMessage.textContent = `Round ${i} winner: ${winner}`;
-    }
-    //console.log(`Your choice: ${playerSelection}`); 
-    );
+            const winnerMessage = document.querySelector(`#winnerMessage`)
+            winnerMessage.textContent = `Round ${i} winner: ${winner}`;
+        if(scores[0] === winningScore || scores[1] === winningScore){
+            const finalWinner = document.querySelector('#finalWinner');
+            const finalWinnerMessage = playerScore === winningScore
+            ? `After round ${i}, YOU'RE THE WINNER!!`
+            : `After round ${i}, COMPUTER WINS! YOU LOSE!`;
+            finalWinner.textContent = finalWinnerMessage;
+            //alert(`GAME OVER ${finalWinnerMessage}`)
+        }
+    });
 }); 
 
 function getComputerChoice(){ 
@@ -52,7 +58,6 @@ function playRound(playerSelection, computerSelection){
     //console.log(result);
     const resultMessage = document.querySelector('#resultMessage');
         resultMessage.textContent = `${result}`;
-    //return winner; 
     settingScores(winner);
     return winner;
 };

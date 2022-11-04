@@ -5,10 +5,8 @@ const scores = [0,0]; // set starting scores
 
 let computerSelection;
 let playerSelection;
+let winner;
 
-// pick a move
-
-// computer selection
 
 function getComputerChoice(){ //create function getComputerChoice() which returns randomly assigned value from choices list
     let randomIndex = Math.floor(Math.random() * choices.length);         //get random index value
@@ -19,78 +17,65 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
         button.addEventListener('click', () => {      
             const playerPick = document.querySelector('#playerPick');
-            playerPick.textContent = button.innerHTML;
-            playerSelection = (playerPick.textContent.toLowerCase());
-            playRound (playerSelection, computerSelection);
+            playerPick.textContent = `You picked: ${button.innerHTML}`;
+            playerSelection = ((button.innerHTML).toLowerCase());
+            //console.log(button.innerHTML);
+            computerSelection = getComputerChoice();
+            const computerPick = document.querySelector('#computerPick');
+            computerPick.textContent = `Computer picked: ${computerSelection} `;
+            game(1);
+            //playRound (playerSelection, computerSelection);
         //console.log(`Your choice: ${playerSelection}`); 
-        });
+        }); 
     });
 
 
-
-
-// function getPlayerChoice(){
-//     const buttons = document.querySelectorAll('button');
-//     buttons.forEach((button) => {
-//         button.addEventListener('click', 
-//         () => {
-//                 const playerSelection = document.querySelector('#playerPick');
-//                 playerSelection.textContent = (button.innerHTML);
-//                 //return playerSelectionText = playerSelection.textContent;
-//                 console.log(playerSelection.textContent);
-//             })  
-//     });
-// }
-//getPlayerChoice();
-
-//console.log(returnPlayerPick());
-
-
-
-
-
 function playRound(playerSelection, computerSelection){ //play round
-    
-    //playerSelection = getPlayerChoice();
-    console.log(`Your choice: ${playerSelection}`); // print player choice in console
-    
-    computerSelection = getComputerChoice(); // set computer choice for this round 
-    console.log(`Computer choice: ${computerSelection}`); // send message to console 
 
+    // console.log(`Your choice: ${playerSelection}`); // print player choice in console
+    
+    //computerSelection = getComputerChoice(); // set computer choice for this round 
+    //console.log(`Computer choice: ${computerSelection}`); // send message to console 
+    let result;
     if (playerSelection === computerSelection) { // play round
-            let result = "It's a draw!";
-            let winner = "draw";
+            result = "It's a draw!";
+            winner = "draw";
     }  
     else if ( // rules = rock > scissors, scissors > paper, paper > rock 
         (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "rock" && computerSelection == "scissors")) {
-            result = `${playerSelection.toUpperCase} beats ${computerSelection}! You win!`
+            result = `${playerSelection} beats ${computerSelection}! You win!`
             winner = "player";
     }
     else {
             result = `${computerSelection} beats ${playerSelection}! You lose!`
             winner = "computer";
     };    
-    return result; 
+    //console.log(result);
+    const resultMessage = document.querySelector('#resultMessage');
+        resultMessage.textContent = `${result}`;
+    return winner; 
 };
 
-// function game(rounds) {
-//     let endResult = "";
-//     for (let i = 0; i < rounds; i++){ // run rounds
-//         let a = i+1
-//         result = `Round ${a}: ${playRound()}`;
+function game(rounds) {
+    let endResult = "";
+    for (let i = 0; i < rounds; i++){ // run rounds
+        let a = i+1
 
-//         // track score
-//             if (winner == "player") { scores[0] += 1}
-//             else if (winner == "computer"){scores [1] +=1};
-//             let currentResult = `Player: ${scores[0]}: Computer: ${scores[1]}`;
+        const winnerMessage = document.querySelector(`#winnerMessage`)
+        winnerMessage.textContent = `Round ${a} winner: ${playRound(playerSelection, computerSelection)}`;
+
+        // track score
+            if (winner == "player") { scores[0] += 1}
+            else if (winner == "computer"){scores [1] +=1};
+            let currentResult = `Player: ${scores[0]}: Computer: ${scores[1]}`;
         
-//         console.log(result);
-//         console.log(currentResult);
-//         endResult = currentResult;
-//     };
+        console.log(roundWinner);
+        console.log(currentResult);
+        endResult = currentResult;
+    };
     
-//     return `Final score: ${endResult}`;
-// }
+    return `Final score: ${endResult}`;
+}
 
 // console.log(game(2));
 
@@ -100,9 +85,6 @@ function playRound(playerSelection, computerSelection){ //play round
 // //rematch
 
 
-
-
-// /*
 
 
 // const message = document.querySelector('#message');
@@ -212,4 +194,21 @@ function playRound(playerSelection, computerSelection){ //play round
 //    // console.log(finalScore);
 
 
-// */
+
+
+
+// function getPlayerChoice(){
+//     const buttons = document.querySelectorAll('button');
+//     buttons.forEach((button) => {
+//         button.addEventListener('click', 
+//         () => {
+//                 const playerSelection = document.querySelector('#playerPick');
+//                 playerSelection.textContent = (button.innerHTML);
+//                 //return playerSelectionText = playerSelection.textContent;
+//                 console.log(playerSelection.textContent);
+//             })  
+//     });
+// }
+//getPlayerChoice();
+
+//console.log(returnPlayerPick());

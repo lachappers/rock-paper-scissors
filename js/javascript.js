@@ -12,54 +12,58 @@ function getComputerChoice(){ //create function getComputerChoice() which return
     return computerSelection = (choices[randomIndex]).toLowerCase();        //get random item
 }
 
-const buttons = document.querySelectorAll('button');
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {      // return playerSelection;
-        //let playerSelection = (button.innerHTML);
-            const playerSelection = document.querySelector('#playerPick');
-            playerSelection.textContent = (button.innerHTML);
-        //console.log(`Your choice: ${playerSelection}`); 
-        });
-    });
-
-
-
-
-
-
-// function playRound(){ //play round
-//     // let playerSelection = window.prompt("Rock, Paper or Scissors?");
-//     //     playerSelection = playerSelection.toLowerCase();
-//     //     console.log(`Your choice: ${playerSelection.toUpperCase()}`); // print player choice in console
-
-//         const btns = document.querySelectorAll('.btn');
-//         btns.forEach((btn) => {
-//             btn.addEventListener('click', () => {
-//             return playerSelection = (btn.innerHTML).toLowerCase;
-//             }, true);
+// const buttons = document.querySelectorAll('button');
+//     buttons.forEach((button) => {
+//         button.addEventListener('click', () => {      // return playerSelection;
+//             const playerSelection = document.querySelector('#playerPick');
+//             playerSelection.textContent = (button.innerHTML);
+//         //console.log(`Your choice: ${playerSelection}`); 
 //         });
-//         console.log(`Your choice: ${playerSelection.toUpperCase}`); // print player choice in console
+//     });
+function getPlayerChoice(){
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', 
+        () => {
+                const playerSelection = document.querySelector('#playerPick');
+                playerSelection.textContent = (button.innerHTML);
+                //return playerSelectionText = playerSelection.textContent;
+                console.log(playerSelection.textContent);
+            })  
+    });
+}
+//getPlayerChoice();
 
+//console.log(returnPlayerPick());
+
+
+
+function playRound(){ //play round
     
-//     let computerSelection = getComputerChoice(); // set computer choice for this round 
-//         console.log(`Computer choice: ${computerSelection.toUpperCase()}`); // send message to console 
+    let playerSelection = getPlayerChoice();
+    console.log(`Your choice: ${playerSelection}`); // print player choice in console
+    
+    let computerSelection = getComputerChoice(); // set computer choice for this round 
+    console.log(`Computer choice: ${computerSelection}`); // send message to console 
 
-//     if (playerSelection === computerSelection) { // play round
-//             let result = "It's a draw!";
-//             let winner = "draw";
-//     }
+    if (playerSelection === computerSelection) { // play round
+            let result = "It's a draw!";
+            let winner = "draw";
+    }
         
-//     else if ( // rules = rock > scissors, scissors > paper, paper > rock 
-//         (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "rock" && computerSelection == "scissors")) {
-//             result = `${playerSelection.toUpperCase} beats ${computerSelection.toUpperCase()}! You win!`
-//             winner = "player";
-//     }
-//     else {
-//             result = `${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase}! You lose!`
-//             winner = "computer";
-//     };    
-//     return result; 
-// };
+    else if ( // rules = rock > scissors, scissors > paper, paper > rock 
+        (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "rock" && computerSelection == "scissors")) {
+            result = `${playerSelection.toUpperCase} beats ${computerSelection}! You win!`
+            winner = "player";
+    }
+    else {
+            result = `${computerSelection} beats ${playerSelection}! You lose!`
+            winner = "computer";
+    };    
+    return result; 
+};
+const playTime = document.querySelectorAll('button');
+playTime.addEventListener('click', playRound());
 
 // function game(rounds) {
 //     let endResult = "";

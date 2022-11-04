@@ -8,19 +8,29 @@
 </head>
 <body>
     <h1>Rock Paper Scissors</h1>
-    <button id="btn">Rock</button>
-    <button id="btn">Paper</button>
-    <button id="btn">Scissors</button>
-
-    <div id="message"></div>
-    <div id="currentSelection">
-        <div id="playerSelection"></div>
-        <div id="computerSelection"></div>
+    <div id="messages">
+        <h1>Welcome!</h1>
+        <p id = "result">Pick a move to play</p>
+        <p>Round:</p>
     </div>
+
+    <div id = "buttonContainer">
+        <button id="1">Rock</button>
+        <button id="2">Paper</button>
+        <button id="3">Scissors</button>
+    </div>
+
+    <div id="currentSelection">
+        <div id="playerPick"> </div>
+        <div id="computerPick"> </div>
+    </div>
+    
     <div id="results">
         <div id="playerScore">Your Score:</div>
         <div id="computerScore">Computer's Score:</div>
     </div>
-        <script src="./js/javascript.js"></script>
+    
+    <script src="./js/javascript.js"></script>
+
 </body>
 </html>

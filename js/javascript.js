@@ -10,47 +10,37 @@ let playerScore;
 let computerScore;
 let i = 0;
 
-function updateScores(scores){
-let playerScore = document.querySelector('#playerScore');
-    playerScore = scores[0];
-let computerScore = document.querySelector('#computerScore');
-    computerScore = scores[1];
-}
-
-function getComputerChoice(){ //create function getComputerChoice() which returns randomly assigned value from choices list
-    let randomIndex = Math.floor(Math.random() * choices.length);         //get random index value
-    return computerSelection = (choices[randomIndex]).toLowerCase();        //get random item
-}
-
-
-
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
-        button.addEventListener('click', () => {    
-                i +=1;
-                const playerPick = document.querySelector('#playerPick');
-                playerPick.textContent = `You picked: ${button.innerHTML}`;
-                playerSelection = ((button.innerHTML).toLowerCase());
-                computerSelection = getComputerChoice();
-                const computerPick = document.querySelector('#computerPick');
-                computerPick.textContent = `Computer picked: ${computerSelection} `;
-                playRound (playerSelection, computerSelection);
-                const winnerMessage = document.querySelector(`#winnerMessage`)
-                winnerMessage.textContent = `Round ${i} winner: ${playRound(playerSelection, computerSelection)}`;
-            }
-        //console.log(`Your choice: ${playerSelection}`); 
-        );
-    }); 
+    button.addEventListener('click', () => {    
+        i +=1;
+        const playerPick = document.querySelector('#playerPick');
+        playerPick.textContent = `You picked: ${button.innerHTML}`;
+        playerSelection = ((button.innerHTML).toLowerCase());
+        computerSelection = getComputerChoice();
+        const computerPick = document.querySelector('#computerPick');
+        computerPick.textContent = `Computer picked: ${computerSelection} `;
+        playRound (playerSelection, computerSelection);
+        const winnerMessage = document.querySelector(`#winnerMessage`)
+        winnerMessage.textContent = `Round ${i} winner: ${winner}`;
+    }
+    //console.log(`Your choice: ${playerSelection}`); 
+    );
+}); 
 
+function getComputerChoice(){ 
+    let randomIndex = Math.floor(Math.random() * choices.length);
+    return computerSelection = (choices[randomIndex]).toLowerCase();
+}    
 
-function playRound(playerSelection, computerSelection){ //play round
+function playRound(playerSelection, computerSelection){
     let result;
-    if (playerSelection === computerSelection) { // play round
+    if (playerSelection === computerSelection) {
             result = "It's a draw!";
             winner = "draw";
     }  
-    else if ( // rules = rock > scissors, scissors > paper, paper > rock 
+    else if ( 
         (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "rock" && computerSelection == "scissors")) {
             result = `${playerSelection} beats ${computerSelection}! You win!`
             winner = "player";
@@ -74,6 +64,14 @@ function settingScores(winner){
     //let currentResult = `Player: ${scores[0]}: Computer: ${scores[1]}`;
     updateScores(scores);
 };
+
+function updateScores(scores){
+    playerScore = document.querySelector('#playerScore');
+        playerScore.textContent = scores[0];
+    
+    computerScore = document.querySelector('#computerScore');
+        computerScore.textContent = scores[1];
+}
 
 /*
 

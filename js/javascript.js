@@ -8,8 +8,9 @@ let playerSelection;
 let winner;
 let playerScore;
 let computerScore;
+let i = 0;
 
-function updateScores(){
+function updateScores(scores){
 let playerScore = document.querySelector('#playerScore');
     playerScore = scores[0];
 let computerScore = document.querySelector('#computerScore');
@@ -22,29 +23,28 @@ function getComputerChoice(){ //create function getComputerChoice() which return
 }
 
 
+
+
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
-        button.addEventListener('click', () => {      
-            const playerPick = document.querySelector('#playerPick');
-            playerPick.textContent = `You picked: ${button.innerHTML}`;
-            playerSelection = ((button.innerHTML).toLowerCase());
-            //console.log(button.innerHTML);
-            computerSelection = getComputerChoice();
-            const computerPick = document.querySelector('#computerPick');
-            computerPick.textContent = `Computer picked: ${computerSelection} `;
-            game(5);
-            //playRound (playerSelection, computerSelection);
+        button.addEventListener('click', () => {    
+                i +=1;
+                const playerPick = document.querySelector('#playerPick');
+                playerPick.textContent = `You picked: ${button.innerHTML}`;
+                playerSelection = ((button.innerHTML).toLowerCase());
+                computerSelection = getComputerChoice();
+                const computerPick = document.querySelector('#computerPick');
+                computerPick.textContent = `Computer picked: ${computerSelection} `;
+                playRound (playerSelection, computerSelection);
+                const winnerMessage = document.querySelector(`#winnerMessage`)
+                winnerMessage.textContent = `Round ${i} winner: ${playRound(playerSelection, computerSelection)}`;
+            }
         //console.log(`Your choice: ${playerSelection}`); 
-        }); 
-    });
+        );
+    }); 
 
 
 function playRound(playerSelection, computerSelection){ //play round
-
-    // console.log(`Your choice: ${playerSelection}`); // print player choice in console
-    
-    //computerSelection = getComputerChoice(); // set computer choice for this round 
-    //console.log(`Computer choice: ${computerSelection}`); // send message to console 
     let result;
     if (playerSelection === computerSelection) { // play round
             result = "It's a draw!";
@@ -62,17 +62,27 @@ function playRound(playerSelection, computerSelection){ //play round
     //console.log(result);
     const resultMessage = document.querySelector('#resultMessage');
         resultMessage.textContent = `${result}`;
-    return winner; 
+    //return winner; 
+    settingScores(winner);
+    return winner;
 };
+
+
+function settingScores(winner){
+    if (winner == "player") { scores[0] += 1} // track score
+    else if (winner == "computer"){scores [1] +=1};
+    //let currentResult = `Player: ${scores[0]}: Computer: ${scores[1]}`;
+    updateScores(scores);
+};
+
+/*
 
 function game(rounds) {
     let endResult = "";
     for (let i = 0; i < rounds; i++){ // run rounds
-        let a = i+1
-
+        let a = i+1;
         const winnerMessage = document.querySelector(`#winnerMessage`)
         winnerMessage.textContent = `Round ${a} winner: ${playRound(playerSelection, computerSelection)}`;
-
             if (winner == "player") { scores[0] += 1} // track score
             else if (winner == "computer"){scores [1] +=1};
             let currentResult = `Player: ${scores[0]}: Computer: ${scores[1]}`;
@@ -86,7 +96,7 @@ function game(rounds) {
 }
 //game(2);
 // console.log(game(2));
-
+*/
 
 // //update text
 
